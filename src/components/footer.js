@@ -1,9 +1,10 @@
+import { redirect } from "next/dist/server/api-utils";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Footer = () => {
-  const [form, setForm] = useState({
-    email:''
-  })
+  const router = useRouter()
+  const [form, setForm] = useState({email:''})
 
   const handleChange = (e) => {
     const {value, name} = e.target
@@ -17,7 +18,10 @@ const Footer = () => {
     e.preventDefault()
     postData(form)
   }
-
+  const resetForm = () => {
+    setForm({email:''})
+    alert('Thank you for subscribe!!')
+  }
   const postData = async (form) => {
     try {
       console.log(form)
@@ -30,6 +34,8 @@ const Footer = () => {
       })
       const data = await res.json()
       console.log(data)
+      resetForm()
+      router.push('/')
     } catch (error) {
       console.log(error)
     }

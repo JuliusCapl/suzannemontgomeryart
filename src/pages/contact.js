@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { sendContactForm } from "../utils/apimailer";
+import { useRouter } from "next/router";
 
 const initValues = {
   name: "",
@@ -10,8 +11,9 @@ const initValues = {
 const initState = { values: initValues };
 
 const Contact = () => {
+  const router = useRouter()
   const [state, setState] = useState(initState);
-  const {values, isLoading} = state
+  const {values} = state
   const handleChange = ({target}) => setState((prev)=>({
     ...prev,
     values: {
@@ -20,15 +22,13 @@ const Contact = () => {
     }
   }))
   const onSubmit = async () => {
-    // setState((prev)=>({
-    //   ...prev,
-    //   isLoading: true
-    // }))
     try {
       await sendContactForm(values)
       setState(initState)
+      alert('Thanks for your message, I will get back to you ASAP')
+      router.push('/')
     } catch (error) {
-      
+      console.log(error)
     }
 
   }

@@ -1,13 +1,14 @@
 import connectDB from "../lib/dbConnect";
 import Email from "../models/Email";
+import Image from "next/image";
 
 export default function Home () {
   return (
     <>
       <section>
         <div className="main-view home-pic container">
-          <h1>Suzanne Montgomery</h1>
-          <p className="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit veritatis!</p>
+        <h1>Suzanne Montgomery</h1>
+        <p className="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit veritatis!</p>
         </div>
       </section>
     </>
