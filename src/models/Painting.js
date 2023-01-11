@@ -15,6 +15,11 @@ const paintingSchema = new mongoose.Schema({
     description:{
         type:String
     }
+},
+{
+    timestamps: true
 })
+
+mongoose.models={}
 
 export default mongoose.models.Painting || mongoose.model('Painting', paintingSchema)
